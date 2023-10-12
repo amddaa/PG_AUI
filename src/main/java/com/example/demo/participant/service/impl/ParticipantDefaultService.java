@@ -1,9 +1,9 @@
 package com.example.demo.participant.service.impl;
 
 import com.example.demo.participant.Participant;
-import com.example.demo.participant.ParticipantRepository;
+import com.example.demo.participant.repository.api.ParticipantRepository;
 import com.example.demo.participant.service.api.ParticipantService;
-import com.example.demo.tournament.TournamentRepository;
+import com.example.demo.tournament.repository.api.TournamentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

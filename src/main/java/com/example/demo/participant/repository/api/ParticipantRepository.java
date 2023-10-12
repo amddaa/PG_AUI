@@ -1,4 +1,5 @@
-package com.example.demo.participant;
+package com.example.demo.participant.repository.api;
+import com.example.demo.participant.Participant;
 import com.example.demo.tournament.Tournament;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

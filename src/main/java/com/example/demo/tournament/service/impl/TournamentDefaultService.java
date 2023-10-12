@@ -1,7 +1,7 @@
 package com.example.demo.tournament.service.impl;
 
 import com.example.demo.tournament.Tournament;
-import com.example.demo.tournament.TournamentRepository;
+import com.example.demo.tournament.repository.api.TournamentRepository;
 import com.example.demo.tournament.service.api.TournamentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

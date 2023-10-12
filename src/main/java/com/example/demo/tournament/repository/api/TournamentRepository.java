@@ -1,4 +1,4 @@
-package com.example.demo.tournament;
+package com.example.demo.tournament.repository.api;
 import com.example.demo.tournament.Tournament;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
