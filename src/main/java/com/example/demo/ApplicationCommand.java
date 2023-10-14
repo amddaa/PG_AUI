@@ -1,15 +1,13 @@
 package com.example.demo;
 
-import com.example.demo.participant.Participant;
+import com.example.demo.participant.entity.Participant;
 import com.example.demo.participant.service.impl.ParticipantDefaultService;
-import com.example.demo.tournament.Tournament;
+import com.example.demo.tournament.entity.Tournament;
 import com.example.demo.tournament.service.impl.TournamentDefaultService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.data.repository.query.parser.Part;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
 import java.util.Scanner;
 import java.util.UUID;
 
@@ -64,7 +62,7 @@ public class ApplicationCommand implements CommandLineRunner {
                             .tournament(t)
                             .surname(surname)
                             .rank(rank)
-                            .uuid(UUID.randomUUID())
+                            .id(UUID.randomUUID())
                             .build());
                 }
                 case "delete_participant" -> {

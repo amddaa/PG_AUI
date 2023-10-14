@@ -1,6 +1,6 @@
 package com.example.demo.tournament.service.impl;
 
-import com.example.demo.tournament.Tournament;
+import com.example.demo.tournament.entity.Tournament;
 import com.example.demo.tournament.repository.api.TournamentRepository;
 import com.example.demo.tournament.service.api.TournamentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +32,10 @@ public class TournamentDefaultService implements TournamentService {
     @Override
     public void create(Tournament tournament) {
         repository.save(tournament);
+    }
+
+    @Override
+    public void delete(UUID id) {
+        repository.findById(id).ifPresent(repository::delete);
     }
 }

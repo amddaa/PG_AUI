@@ -1,6 +1,6 @@
 package com.example.demo.participant.service.impl;
 
-import com.example.demo.participant.Participant;
+import com.example.demo.participant.entity.Participant;
 import com.example.demo.participant.repository.api.ParticipantRepository;
 import com.example.demo.participant.service.api.ParticipantService;
 import com.example.demo.tournament.repository.api.TournamentRepository;

@@ -1,8 +1,8 @@
 package com.example.demo;
 
-import com.example.demo.participant.Participant;
+import com.example.demo.participant.entity.Participant;
 import com.example.demo.participant.service.api.ParticipantService;
-import com.example.demo.tournament.Tournament;
+import com.example.demo.tournament.entity.Tournament;
 import com.example.demo.tournament.service.api.TournamentService;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,43 +28,43 @@ public class InitializeData implements InitializingBean {
     @Override
     public void afterPropertiesSet() throws Exception {
         Tournament tournament1 = Tournament.builder()
-                .uuid(UUID.randomUUID())
+                .id(UUID.fromString("f5875513-bf7b-4ae1-b8a5-5b70a1b90e76"))
                 .name("Bardzo wazny turniej")
-                .requiredRanking(2000)
+                .requiredRank(2000)
                 .build();
 
         Tournament tournament2 = Tournament.builder()
-                .uuid(UUID.randomUUID())
+                .id(UUID.randomUUID())
                 .name("Malo wazny turniej")
-                .requiredRanking(1000)
+                .requiredRank(1000)
                 .build();
 
         tournamentService.create(tournament1);
         tournamentService.create(tournament2);
 
         Participant participant1 = Participant.builder()
-                .uuid(UUID.randomUUID())
+                .id(UUID.randomUUID())
                 .surname("Kowalski")
                 .rank(2500)
                 .tournament(tournament1)
                 .build();
 
         Participant participant2 = Participant.builder()
-                .uuid(UUID.randomUUID())
+                .id(UUID.fromString("525d3e7b-bb1f-4c13-bf17-926d1a12e4c0"))
                 .surname("Niekowalski")
                 .rank(2300)
                 .tournament(tournament1)
                 .build();
 
         Participant participant3 = Participant.builder()
-                .uuid(UUID.randomUUID())
+                .id(UUID.randomUUID())
                 .surname("Duda")
                 .rank(1100)
                 .tournament(tournament2)
                 .build();
 
         Participant participant4 = Participant.builder()
-                .uuid(UUID.randomUUID())
+                .id(UUID.randomUUID())
                 .surname("Polanski")
                 .rank(1000)
                 .tournament(tournament2)

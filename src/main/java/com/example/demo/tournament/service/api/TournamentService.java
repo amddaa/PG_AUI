@@ -1,7 +1,6 @@
 package com.example.demo.tournament.service.api;
 
-import com.example.demo.participant.Participant;
-import com.example.demo.tournament.Tournament;
+import com.example.demo.tournament.entity.Tournament;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,4 +12,6 @@ public interface TournamentService {
     List<Tournament> findAll();
 
     void create(Tournament tournament);
+
+    void delete(UUID id);
 }

@@ -1,6 +1,6 @@
 package com.example.demo.participant.service.api;
 
-import com.example.demo.participant.Participant;
+import com.example.demo.participant.entity.Participant;
 
 import java.util.List;
 import java.util.Optional;

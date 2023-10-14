@@ -1,5 +1,5 @@
-package com.example.demo.tournament;
-import com.example.demo.participant.Participant;
+package com.example.demo.tournament.entity;
+import com.example.demo.participant.entity.Participant;
 import lombok.*;
 import java.util.List;
 import java.io.Serializable;
@@ -18,13 +18,14 @@ import jakarta.persistence.*;
 @Table(name="tournaments")
 public class Tournament implements Serializable{
     @Id
-    private UUID uuid;
+    private UUID id;
 
     private String name;
 
-    private int requiredRanking;
+    @Column(nullable = true)
+    private int requiredRank;
 
-    @OneToMany(mappedBy = "tournament")
+    @OneToMany(mappedBy = "tournament", cascade = CascadeType.REMOVE)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private List<Participant> participants;

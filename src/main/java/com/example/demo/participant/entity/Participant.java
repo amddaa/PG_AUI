@@ -1,5 +1,5 @@
-package com.example.demo.participant;
-import com.example.demo.tournament.Tournament;
+package com.example.demo.participant.entity;
+import com.example.demo.tournament.entity.Tournament;
 import lombok.*;
 import jakarta.persistence.*;
 
@@ -17,12 +17,9 @@ import java.util.UUID;
 @Table(name = "participants")
 public class Participant implements Serializable {
     @Id
-    private UUID uuid;
-
+    private UUID id;
     private String surname;
-
     private int rank;
-
     @ManyToOne
     @JoinColumn(name = "tournament")
     private Tournament tournament;
