@@ -1,0 +1,27 @@
+### Get all tournaments
+
+GET http://localhost:8082/api/tournaments
+
+### Get single tournament
+
+GET http://localhost:8082/api/tournaments/f5875513-bf7b-4ae1-b8a5-5b70a1b90e76
+
+### Get single tournament, not existing
+
+GET http://localhost:8082/api/tournaments/ac4e2683-b2ba-4695-94d9-806a97fce71e
+
+### Create new tournament
+
+PUT http://localhost:8082/api/tournaments/3c6f1eb1-8069-44ab-988f-d7fed2b65d88
+Content-Type: application/json
+
+{
+  "name": "Turniej testowy",
+  "requiredRank": 0,
+  "tournament": "3c6f1eb1-8069-44ab-988f-d7fed2b65d88"
+}
+
+### Delete tournament
+
+DELETE http://localhost:8082/api/tournaments/f5875513-bf7b-4ae1-b8a5-5b70a1b90e76
+

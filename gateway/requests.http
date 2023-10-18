@@ -1,0 +1,63 @@
+### Get all participants
+
+GET http://localhost:8083/api/participants
+
+### Get single participant
+
+GET http://localhost:8083/api/participants/525d3e7b-bb1f-4c13-bf17-926d1a12e4c0
+
+### Get single participant, not existing
+
+GET http://localhost:8083/api/participants/3c6f1eb1-8069-44ab-988f-d7fed2b65d87
+
+### Get tournament participants
+
+GET http://localhost:8083/api/tournaments/f5875513-bf7b-4ae1-b8a5-5b70a1b90e76/participants
+
+### Get tournament participants, not existing
+
+GET http://localhost:8083/api/tournaments/a1175513-bf7b-4ae1-b8a5-5b70a1b90e79/participants
+
+### Create new participant
+
+PUT http://localhost:8083/api/participants/3c6f1eb1-8069-44ab-988f-d7fed2b65d87
+Content-Type: application/json
+Authorization: Basic a2V2aW46dXNlcnVzZXI=
+
+{
+  "surname": "Testowy",
+  "rank": 2222,
+  "tournament": "f5875513-bf7b-4ae1-b8a5-5b70a1b90e76"
+}
+
+### Delete participant.
+
+DELETE http://localhost:8083/api/participants/525d3e7b-bb1f-4c13-bf17-926d1a12e4c0
+
+### Get all tournaments
+
+GET http://localhost:8083/api/tournaments
+
+### Get single tournament
+
+GET http://localhost:8083/api/tournaments/f5875513-bf7b-4ae1-b8a5-5b70a1b90e76
+
+### Get single tournament, not existing
+
+GET http://localhost:8083/api/tournaments/ac4e2683-b2ba-4695-94d9-806a97fce71e
+
+### Create new tournament
+
+PUT http://localhost:8083/api/tournaments/3c6f1eb1-8069-44ab-988f-d7fed2b65d88
+Content-Type: application/json
+
+{
+  "name": "Turniej testowy",
+  "requiredRank": 0,
+  "tournament": "3c6f1eb1-8069-44ab-988f-d7fed2b65d88"
+}
+
+### Delete tournament
+
+DELETE http://localhost:8083/api/tournaments/f5875513-bf7b-4ae1-b8a5-5b70a1b90e76
+
