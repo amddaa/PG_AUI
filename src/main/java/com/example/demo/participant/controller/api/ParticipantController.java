@@ -2,8 +2,8 @@ package com.example.demo.participant.controller.api;
 
 import com.example.demo.participant.dto.GetParticipantResponse;
 import com.example.demo.participant.dto.GetParticipantsResponse;
+import com.example.demo.participant.dto.PatchParticipantRequest;
 import com.example.demo.participant.dto.PutParticipantRequest;
-import com.example.demo.tournament.dto.PutTournamentRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,6 +29,15 @@ public interface ParticipantController {
     GetParticipantsResponse getTournamentParticipants(
             @PathVariable("tournamentId")
             UUID tournamentId
+    );
+
+    @PatchMapping("/api/participants/{id}")
+    @ResponseStatus(HttpStatus.CREATED)
+    void patchParticipant(
+            @PathVariable("id")
+            UUID id,
+            @RequestBody
+            PatchParticipantRequest request
     );
 
     @PutMapping("/api/participants/{id}")

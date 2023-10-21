@@ -62,7 +62,7 @@ public class TournamentDefaultController implements TournamentController {
         }
         else throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 
-        service.create(requestToTournamentPatch.apply(id, request));
+        service.update(requestToTournamentPatch.apply(id, request));
     }
 
     @Override

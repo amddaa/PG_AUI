@@ -1,4 +1,4 @@
-package com.example.demo.tournament.dto;
+package com.example.demo.participant.dto;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -10,7 +10,6 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.util.UUID;
-
 @Getter
 @Setter
 @Builder
@@ -18,8 +17,8 @@ import java.util.UUID;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @ToString
 @EqualsAndHashCode
-public class PutTournamentRequest {
-    private String name;
-
-    private int requiredRank;
+public class PatchParticipantRequest {
+    private String surname;
+    private int rank;
+    private UUID tournament;
 }
