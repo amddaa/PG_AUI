@@ -11,6 +11,8 @@ public interface TournamentService {
 
     List<Tournament> findAll();
 
+    void update(Tournament tournament);
+
     void create(Tournament tournament);
 
     void delete(UUID id);
