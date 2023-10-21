@@ -1,1 +1,6 @@
-<p>tournaments works!</p>
+<ul>
+  <li *ngFor="let tournament of tournaments; let i = index">
+    {{ tournament.name }}
+    <button (click)="removeTournament(tournament.id, i)">Usuń</button>
+  </li>
+</ul>
