@@ -2,6 +2,7 @@ package com.example.demo.tournament.controller.api;
 
 import com.example.demo.tournament.dto.GetTournamentResponse;
 import com.example.demo.tournament.dto.GetTournamentsResponse;
+import com.example.demo.tournament.dto.PatchTournamentRequest;
 import com.example.demo.tournament.dto.PutTournamentRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +22,16 @@ public interface TournamentController {
             @PathVariable("id")
             UUID id
     );
+
+    @PatchMapping("/api/tournaments/{id}")
+    @ResponseStatus(HttpStatus.CREATED)
+    void patchTournament(
+            @PathVariable("id")
+            UUID id,
+            @RequestBody
+            PatchTournamentRequest request
+    );
+
 
     @PutMapping("/api/tournaments/{id}")
     @ResponseStatus(HttpStatus.CREATED)

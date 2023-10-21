@@ -50,12 +50,28 @@ GET http://localhost:8080/api/tournaments/ac4e2683-b2ba-4695-94d9-806a97fce71e
 
 PUT http://localhost:8080/api/tournaments/3c6f1eb1-8069-44ab-988f-d7fed2b65d88
 Content-Type: application/json
-Authorization: Basic a2V2aW46dXNlcnVzZXI=
 
 {
   "name": "Turniej testowy",
-  "requiredRank": 0,
-  "tournament": "3c6f1eb1-8069-44ab-988f-d7fed2b65d88"
+  "requiredRank": 0
+}
+
+### Update tournament
+
+PATCH http://localhost:8080/api/tournaments/3c6f1eb1-8069-44ab-988f-d7fed2b65d88
+Content-Type: application/json
+
+{
+  "requiredRank": 2000
+}
+
+### Update tournament
+
+PATCH http://localhost:8080/api/tournaments/3c6f1eb1-8069-44ab-988f-d7fed2b65d88
+Content-Type: application/json
+
+{
+  "name": "Turniej ttttttt"
 }
 
 ### Delete tournament
