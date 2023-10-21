@@ -18,7 +18,7 @@ import java.util.UUID;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @ToString
 @EqualsAndHashCode
-public class PutTournamentRequest {
+public class PatchTournamentRequest {
     private String name;
 
     private int requiredRank;

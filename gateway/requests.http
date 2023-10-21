@@ -30,6 +30,26 @@ Authorization: Basic a2V2aW46dXNlcnVzZXI=
   "tournament": "f5875513-bf7b-4ae1-b8a5-5b70a1b90e76"
 }
 
+### Update participant
+
+PATCH http://localhost:8083/api/participants/3c6f1eb1-8069-44ab-988f-d7fed2b65d87
+Content-Type: application/json
+
+{
+  "surname": "Updated"
+}
+
+### Update participant
+
+PATCH http://localhost:8083/api/participants/3c6f1eb1-8069-44ab-988f-d7fed2b65d87
+Content-Type: application/json
+
+{
+  "rank": 4444
+}
+
+
+
 ### Delete participant.
 
 DELETE http://localhost:8083/api/participants/525d3e7b-bb1f-4c13-bf17-926d1a12e4c0
@@ -53,9 +73,27 @@ Content-Type: application/json
 
 {
   "name": "Turniej testowy",
-  "requiredRank": 0,
-  "tournament": "3c6f1eb1-8069-44ab-988f-d7fed2b65d88"
+  "requiredRank": 0
 }
+
+### Update tournament
+
+PATCH http://localhost:8083/api/tournaments/3c6f1eb1-8069-44ab-988f-d7fed2b65d88
+Content-Type: application/json
+
+{
+  "requiredRank": 2000
+}
+
+### Update tournament
+
+PATCH http://localhost:8083/api/tournaments/3c6f1eb1-8069-44ab-988f-d7fed2b65d88
+Content-Type: application/json
+
+{
+  "name": "Turniej ttttttt"
+}
+
 
 ### Delete tournament
 

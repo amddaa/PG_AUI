@@ -22,12 +22,29 @@ GET http://localhost:8081/api/tournaments/a1175513-bf7b-4ae1-b8a5-5b70a1b90e79/p
 
 PUT http://localhost:8081/api/participants/3c6f1eb1-8069-44ab-988f-d7fed2b65d87
 Content-Type: application/json
-Authorization: Basic a2V2aW46dXNlcnVzZXI=
 
 {
   "surname": "Testowy",
   "rank": 2222,
   "tournament": "f5875513-bf7b-4ae1-b8a5-5b70a1b90e76"
+}
+
+### Update participant
+
+PATCH http://localhost:8081/api/participants/3c6f1eb1-8069-44ab-988f-d7fed2b65d87
+Content-Type: application/json
+
+{
+  "surname": "Updated"
+}
+
+### Update participant
+
+PATCH http://localhost:8081/api/participants/3c6f1eb1-8069-44ab-988f-d7fed2b65d87
+Content-Type: application/json
+
+{
+  "rank": 4444
 }
 
 ### Delete participant.

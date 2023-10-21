@@ -8,6 +8,6 @@ import java.util.UUID;
 
 public interface TournamentEventRepository {
     void delete(UUID id);
-
+    void update(PatchTournamentRequest request);
     void create(PutTournamentRequest request);
 }

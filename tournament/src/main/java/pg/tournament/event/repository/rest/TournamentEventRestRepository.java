@@ -26,6 +26,11 @@ public class TournamentEventRestRepository implements TournamentEventRepository 
     }
 
     @Override
+    public void update(PatchTournamentRequest request) {
+        restTemplate.put("/api/tournaments/{id}", request);
+    }
+
+    @Override
     public void create(PutTournamentRequest request) {
         restTemplate.put("/api/tournaments/{id}", request);
     }

@@ -30,6 +30,11 @@ public class TournamentDefaultService implements TournamentService {
     }
 
     @Override
+    public void update(Tournament tournament) {
+        repository.save(tournament);
+    }
+
+    @Override
     public void create(Tournament tournament) {
         repository.save(tournament);
     }
