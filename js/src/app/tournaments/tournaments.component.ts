@@ -19,7 +19,7 @@ export class TournamentsComponent implements OnInit {
 
   removeTournament(tournamentId: string, index: number): void {
     this.tournamentService.deleteTournament(tournamentId).subscribe(() => {
-      this.tournaments.splice(index, 1); // Usuń element z listy po sukcesie usunięcia
+      this.tournaments.splice(index, 1);
     });
   }
 }

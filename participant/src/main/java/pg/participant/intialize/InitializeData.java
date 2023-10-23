@@ -34,7 +34,7 @@ public class InitializeData implements InitializingBean {
                 .build();
 
         Tournament tournament2 = Tournament.builder()
-                .id(UUID.randomUUID())
+                .id(UUID.fromString("8db203fc-152e-426d-81ee-d9bb82123039"))
                 .name("Malo wazny turniej")
                 .requiredRank(1000)
                 .build();
