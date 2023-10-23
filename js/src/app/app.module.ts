@@ -6,17 +6,21 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { TournamentsComponent } from './tournaments/tournaments.component';
+import { AddTournamentComponent } from './add-tournament/add-tournament.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    TournamentsComponent
+    TournamentsComponent,
+    AddTournamentComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

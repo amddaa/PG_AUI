@@ -1,6 +1,8 @@
 <ul>
   <li *ngFor="let tournament of tournaments; let i = index">
-    {{ tournament.id }} - {{ tournament.name }}
-    <button (click)="removeTournament(tournament.id, i)">Usuń</button>
+    {{ tournament.name }}
+    <button (click)="removeTournament(tournament.id, i)">Delete</button>
   </li>
 </ul>
+
+<a routerLink="/add-tournament">Add new tournament</a>

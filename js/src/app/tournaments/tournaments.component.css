@@ -28,3 +28,20 @@ ul > li:not(:last-child) {
 button:hover {
   background-color: #c0392b;
 }
+
+/* Styl przycisku "Add new tournament" */
+a {
+  display: block; /* Ustawiamy jako blokowy element, aby móc zastosować text-align */
+  text-align: center; /* Wycentrowanie tekstu wewnątrz przycisku */
+  background-color: #3498db;
+  color: #fff;
+  text-decoration: none;
+  padding: 5px 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+/* Drobna animacja przycisku "Add new tournament" po najechaniu myszką */
+a:hover {
+  background-color: #2980b9;
+}
