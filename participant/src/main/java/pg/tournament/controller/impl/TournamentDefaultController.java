@@ -24,13 +24,13 @@ public class TournamentDefaultController implements TournamentController {
 
     @Override
     public void deleteTournament(UUID id) {
-        service.find(id)
-                .ifPresentOrElse(
-                        tournament -> service.delete(id),
-                        () -> {
-                            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-                        }
-                );
+        Optional<Tournament> tournamentOptional = service.find(id);
+
+        if (tournamentOptional.isPresent()) {
+            service.delete(id);
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
     }
 
     @Override
