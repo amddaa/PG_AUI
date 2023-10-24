@@ -1,47 +1,48 @@
-/* Resetowanie domyślnych stylów listy i przycisków */
-ul {
-  list-style: none;
-  padding: 0;
-}
-
+/* Stylizacja przycisków "Edit" i "Delete" */
 li {
+  list-style: none;
   margin: 10px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  overflow: auto; /* Ustawiamy overflow, aby poprawnie zarządzać floatingiem */
 }
 
 button {
-  background-color: #e74c3c;
-  color: #fff;
-  border: none;
-  padding: 5px 10px;
-  cursor: pointer;
-}
-
-/* Dodanie odstępów między elementami */
-ul > li:not(:last-child) {
-  margin-bottom: 10px;
-}
-
-/* Drobna animacja przycisku po najechaniu myszką */
-button:hover {
-  background-color: #c0392b;
-}
-
-/* Styl przycisku "Add new tournament" */
-a {
-  display: block; /* Ustawiamy jako blokowy element, aby móc zastosować text-align */
-  text-align: center; /* Wycentrowanie tekstu wewnątrz przycisku */
   background-color: #3498db;
   color: #fff;
-  text-decoration: none;
-  padding: 5px 10px;
-  margin-top: 10px;
+  border: none;
   border-radius: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+  float: right; /* Ustawiamy floating na prawo */
+  transition: background-color 0.3s; /* Dodajemy efekt transition na hover */
 }
 
-/* Drobna animacja przycisku "Add new tournament" po najechaniu myszką */
+button:hover {
+  background-color: #1e90ff;
+}
+
+/* Stylizacja przycisku "Edit" */
+button.edit-button {
+  background-color: #2ecc71; /* Inny kolor dla przycisku "Edit" */
+}
+
+button.edit-button:hover {
+  background-color: #27ae60;
+}
+
+/* Stylizacja przycisku "Add new tournament" */
+a {
+  display: block;
+  padding: 10px;
+  background-color: #27ae60;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  clear: right; /* Czyścimy floating */
+  transition: background-color 0.3s; /* Dodajemy efekt transition na hover */
+}
+
 a:hover {
-  background-color: #2980b9;
+  background-color: #219d53;
 }

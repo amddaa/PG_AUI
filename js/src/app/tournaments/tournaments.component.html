@@ -2,6 +2,7 @@
   <li *ngFor="let tournament of tournaments; let i = index">
     {{ tournament.name }}
     <button (click)="removeTournament(tournament.id, i)">Delete</button>
+    <button (click)="editTournament(tournament.id)">Edit</button>
   </li>
 </ul>
 

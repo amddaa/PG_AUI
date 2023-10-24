@@ -10,16 +10,23 @@ import { v4 as uuidv4 } from 'uuid';
 })
 export class TournamentsService {
   private getTournamentsURL = "http://localhost:8083/api/tournaments";
+  private getTournamentByIDURL = "http://localhost:8083/api/tournaments";
   private deleteTournamentURL = "http://localhost:8083/api/tournaments";
-  private createTournamentURL =  "http://localhost:8083/api/tournaments"
+  private createTournamentURL =  "http://localhost:8083/api/tournaments";
+  private updateTournamentURL = "http://localhost:8083/api/tournaments";
   constructor(private http: HttpClient) { }
 
   getTournaments(): Observable<any> {
     return this.http.get(this.getTournamentsURL);
   }
 
-  deleteTournament(tournamentId: string): Observable<any> {
-    const url = `${this.deleteTournamentURL}/${tournamentId}`;
+  getTournamentByID(tournamentID: any): Observable<any> {
+    const url = `${this.getTournamentByIDURL}/${tournamentID}`;
+    return this.http.get(url);
+  }
+
+  deleteTournament(tournamentID: string): Observable<any> {
+    const url = `${this.deleteTournamentURL}/${tournamentID}`;
     return this.http.delete(url);
   }
 
@@ -32,5 +39,11 @@ export class TournamentsService {
     };
 
     return this.http.put(url, requestData, { headers: { 'Content-Type': 'application/json' } });
+  }
+
+  updateTournament(tournamentData: any, tournamentID: any)
+  {
+    const url = `${this.updateTournamentURL}/${tournamentID}`;
+    return this.http.patch(url, tournamentData,{ headers: { 'Content-Type': 'application/json' } })
   }
 }
