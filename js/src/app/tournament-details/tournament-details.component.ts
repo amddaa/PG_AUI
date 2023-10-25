@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {TournamentsService} from "../tournaments.service";
 import {ParticipantsService} from "../participants.service";
 
@@ -13,7 +13,7 @@ export class TournamentDetailsComponent {
   public tournamentData: any = {};
   public participantsList: any = {};
   constructor(private route: ActivatedRoute, private tournamentsService: TournamentsService,
-              private participantsService: ParticipantsService) {}
+              private participantsService: ParticipantsService, private router: Router) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -32,5 +32,9 @@ export class TournamentDetailsComponent {
       .subscribe(data => {
         this.participantsList.participants.splice(index, 1);
       });
+  }
+
+  editParticipant(participantID: string) {
+    this.router.navigate(['/tournament-details', this.tournamentID, 'edit-participant', participantID]);
   }
 }

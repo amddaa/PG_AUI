@@ -7,6 +7,7 @@
   <li *ngFor="let participant of participantsList.participants; let i = index">
     <span>{{ participant.surname }}</span>
     <button (click)="deleteParticipant(participant.id, i)">Delete</button>
+    <button (click)="editParticipant(participant.id)">Edit</button>
   </li>
 </ul>
 

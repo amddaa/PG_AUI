@@ -29,6 +29,5 @@ export class EditTournamentComponent {
       .subscribe(response => {
         this.router.navigate(['/tournaments']);
       });
-
   }
 }
