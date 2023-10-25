@@ -5,13 +5,15 @@ import {HomeComponent} from "./home/home.component";
 import {TournamentsComponent} from "./tournaments/tournaments.component";
 import {AddTournamentComponent} from "./add-tournament/add-tournament.component";
 import {EditTournamentComponent} from "./edit-tournament/edit-tournament.component";
+import {TournamentDetailsComponent} from "./tournament-details/tournament-details.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'tournaments', component: TournamentsComponent },
   { path: 'add-tournament', component: AddTournamentComponent},
-  { path: 'edit-tournament/:id', component: EditTournamentComponent }
+  { path: 'edit-tournament/:id', component: EditTournamentComponent },
+  { path: 'tournament-details/:id', component: TournamentDetailsComponent }
 ];
 
 @NgModule({

@@ -1,8 +1,19 @@
-/* Stylizacja przycisków "Edit" i "Delete" */
+/* Stylizacja elementów listy */
 li {
   list-style: none;
   margin: 10px 0;
+  padding: 10px; /* Dodajemy wewnętrzny padding */
   overflow: auto; /* Ustawiamy overflow, aby poprawnie zarządzać floatingiem */
+  position: relative; /* Dodajemy pozycjonowanie względem rodzica */
+  transition: background-color 0.3s, box-shadow 0.3s; /* Dodajemy efekt transition na hover */
+  border: 1px solid #ccc; /* Obramowanie elementu */
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Cień elementu */
+}
+
+li:hover {
+  background-color: #f2f2f2; /* Kolor tła przy hoverze */
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2); /* Zwiększony cień przy hoverze */
 }
 
 button {
@@ -17,7 +28,7 @@ button {
 }
 
 button:hover {
-  background-color: #1e90ff;
+  background-color: #1e90ff; /* Kolor tła przycisku przy hoverze */
 }
 
 /* Stylizacja przycisku "Edit" */
@@ -26,7 +37,7 @@ button.edit-button {
 }
 
 button.edit-button:hover {
-  background-color: #27ae60;
+  background-color: #27ae60; /* Kolor tła przycisku "Edit" przy hoverze */
 }
 
 /* Stylizacja przycisku "Add new tournament" */
@@ -44,5 +55,5 @@ a {
 }
 
 a:hover {
-  background-color: #219d53;
+  background-color: #219d53; /* Kolor tła przycisku "Add new tournament" przy hoverze */
 }

@@ -1,5 +1,5 @@
 <ul>
-  <li *ngFor="let tournament of tournaments; let i = index">
+  <li *ngFor="let tournament of tournaments; let i = index" (click)="detailsTournament(tournament.id)">
     {{ tournament.name }}
     <button (click)="removeTournament(tournament.id, i)">Delete</button>
     <button (click)="editTournament(tournament.id)">Edit</button>

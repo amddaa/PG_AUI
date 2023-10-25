@@ -1,0 +1,11 @@
+<div>
+  <h2>Tournament "{{ tournamentData.name }}" :</h2>
+</div>
+
+<h3>Participants:</h3>
+<ul>
+  <li *ngFor="let participant of participantsList.participants">
+    <span>Surname: {{ participant.surname }}</span>
+    <span>Rank: {{ participant.rank }}</span>
+  </li>
+</ul>

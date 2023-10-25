@@ -1,0 +1,25 @@
+/* Stylizacja elementów listy uczestników */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s; /* Efekt hover */
+}
+
+li:hover {
+  background-color: #e6e6e6;
+}
+
+/* Stylizacja informacji o uczestnikach */
+span {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}

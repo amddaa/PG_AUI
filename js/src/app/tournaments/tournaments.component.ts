@@ -25,7 +25,11 @@ export class TournamentsComponent implements OnInit {
     });
   }
 
-  editTournament(categoryID: string) {
-    this.router.navigate(['/edit-tournament', categoryID]);
+  editTournament(tournamentID: string) {
+    this.router.navigate(['/edit-tournament', tournamentID]);
+  }
+
+  detailsTournament(tournamentID: string){
+    this.router.navigate(['/tournament-details', tournamentID]);
   }
 }
