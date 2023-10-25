@@ -9,6 +9,9 @@ li {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  display: flex;
+  justify-content: space-between; /* Wyśrodkowanie treści i przycisku na szerokość */
+  align-items: center; /* Wyśrodkowanie treści pionowo */
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s; /* Efekt hover */
 }
@@ -19,7 +22,15 @@ li:hover {
 
 /* Stylizacja informacji o uczestnikach */
 span {
-  display: block;
-  margin-bottom: 5px;
   font-weight: bold;
+}
+
+button {
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s; /* Efekt hover */
 }

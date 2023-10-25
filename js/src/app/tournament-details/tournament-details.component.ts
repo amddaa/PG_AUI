@@ -26,4 +26,11 @@ export class TournamentDetailsComponent {
       });
     });
   }
+
+  deleteParticipant(participantID: string, index: number) {
+    this.participantsService.deleteParticipant(participantID)
+      .subscribe(data => {
+        this.participantsList.participants.splice(index, 1);
+      });
+  }
 }
