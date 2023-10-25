@@ -34,3 +34,21 @@ button {
   cursor: pointer;
   transition: background-color 0.3s; /* Efekt hover */
 }
+
+/* Stylizacja przycisku "Add new tournament" */
+a {
+  display: block;
+  padding: 10px;
+  background-color: #27ae60;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  clear: right; /* Czyścimy floating */
+  transition: background-color 0.3s; /* Dodajemy efekt transition na hover */
+}
+
+a:hover {
+  background-color: #219d53; /* Kolor tła przycisku "Add new tournament" przy hoverze */
+}

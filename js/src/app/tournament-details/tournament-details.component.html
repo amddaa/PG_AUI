@@ -9,3 +9,5 @@
     <button (click)="deleteParticipant(participant.id, i)">Delete</button>
   </li>
 </ul>
+
+<a [routerLink]="['/tournament-details', tournamentData.id, 'add-participant']">Add new participant</a>

@@ -1,0 +1,39 @@
+/* Stylizacja formularza */
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Stylizacja przycisku */
+button[type="submit"] {
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #2980b9;
+}
+
+/* Dostosowanie wyglądu wyłączonego przycisku */
+button[type="submit"]:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
