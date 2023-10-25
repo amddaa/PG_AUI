@@ -12,6 +12,7 @@ import { EditTournamentComponent } from './edit-tournament/edit-tournament.compo
 import { TournamentDetailsComponent } from './tournament-details/tournament-details.component';
 import { AddParticipantComponent } from './add-participant/add-participant.component';
 import { EditParticipantComponent } from './edit-participant/edit-participant.component';
+import { ParticipantDetailsComponent } from './participant-details/participant-details.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { EditParticipantComponent } from './edit-participant/edit-participant.co
     EditTournamentComponent,
     TournamentDetailsComponent,
     AddParticipantComponent,
-    EditParticipantComponent
+    EditParticipantComponent,
+    ParticipantDetailsComponent
   ],
   imports: [
     BrowserModule,

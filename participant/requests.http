@@ -16,7 +16,7 @@ GET http://localhost:8081/api/tournaments/f5875513-bf7b-4ae1-b8a5-5b70a1b90e76/p
 
 ### Get tournament participants, not existing
 
-GET http://localhost:8081/api/tournaments/a1175513-bf7b-4ae1-b8a5-5b70a1b90e79/participants
+GET http://localhost:8081/api/tournaments/5b239242-7c69-4b0c-b658-e98250daace1/participants
 
 ### Create new participant
 

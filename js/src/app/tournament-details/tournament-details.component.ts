@@ -37,4 +37,8 @@ export class TournamentDetailsComponent {
   editParticipant(participantID: string) {
     this.router.navigate(['/tournament-details', this.tournamentID, 'edit-participant', participantID]);
   }
+
+  detailsParticipant(participantID: string) {
+    this.router.navigate(['/tournament-details', this.tournamentID, 'participant-details', participantID]);
+  }
 }

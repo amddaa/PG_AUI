@@ -4,7 +4,7 @@
 
 <h3>Participants:</h3>
 <ul>
-  <li *ngFor="let participant of participantsList.participants; let i = index">
+  <li *ngFor="let participant of participantsList.participants; let i = index" (click)="detailsParticipant(participant.id)">
     <span>{{ participant.surname }}</span>
     <button (click)="deleteParticipant(participant.id, i)">Delete</button>
     <button (click)="editParticipant(participant.id)">Edit</button>

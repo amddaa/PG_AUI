@@ -10,7 +10,7 @@ li {
   border: 1px solid #ccc;
   border-radius: 5px;
   overflow: auto; /* Ustawiamy overflow, aby poprawnie zarządzać floatingiem */
-  position: relative; /* Dodajemy pozycjonowanie względem rodzica *
+  position: relative; /* Dodajemy pozycjonowanie względem rodzica */
   align-items: center; /* Wyśrodkowanie treści pionowo */
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s; /* Efekt hover */
@@ -19,7 +19,6 @@ li {
 li:hover {
   background-color: #e6e6e6;
 }
-
 
 button {
   background-color: #3498db;
