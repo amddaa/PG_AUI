@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
 import pg.tournament.dto.PatchTournamentRequest;
 import pg.tournament.dto.PutTournamentRequest;
-import pg.tournament.entity.Tournament;
 import pg.tournament.event.repository.api.TournamentEventRepository;
 
 import java.util.UUID;
@@ -26,12 +25,14 @@ public class TournamentEventRestRepository implements TournamentEventRepository 
     }
 
     @Override
-    public void update(PatchTournamentRequest request) {
-        restTemplate.put("/api/tournaments/{id}", request);
+    public void update(UUID id, PatchTournamentRequest request) {
+        String url = "/api/tournaments/" + id;
+        restTemplate.put(url, request);
     }
 
     @Override
-    public void create(PutTournamentRequest request) {
-        restTemplate.put("/api/tournaments/{id}", request);
+    public void create(UUID id, PutTournamentRequest request) {
+        String url = "/api/tournaments/" + id;
+        restTemplate.put(url, request);
     }
 }

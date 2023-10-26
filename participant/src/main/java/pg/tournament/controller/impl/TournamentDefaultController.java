@@ -52,6 +52,7 @@ public class TournamentDefaultController implements TournamentController {
     @Override
     public void putTournament(UUID id, PutTournamentRequest request) {
         service.create(Tournament.builder()
+                .id(id)
                 .name(request.getName())
                 .requiredRank(request.getRequiredRank())
                 .build());

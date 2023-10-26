@@ -6,6 +6,7 @@ import pg.tournament.dto.GetTournamentsResponse;
 import pg.tournament.dto.PatchTournamentRequest;
 import pg.tournament.dto.PutTournamentRequest;
 import pg.tournament.entity.Tournament;
+import pg.tournament.event.repository.rest.TournamentEventRestRepository;
 import pg.tournament.function.RequestToTournamentFunction;
 import pg.tournament.function.RequestToTournamentPatchFunction;
 import pg.tournament.function.TournamentToResponseFunction;
@@ -26,19 +27,21 @@ public class TournamentDefaultController implements TournamentController {
     private final TournamentsToResponseFunction tournamentsToResponse;
     private final RequestToTournamentFunction requestToTournament;
     private final RequestToTournamentPatchFunction requestToTournamentPatch;
+    private final TournamentEventRestRepository restRepository;
     @Autowired
     public TournamentDefaultController(
             TournamentService service,
             TournamentToResponseFunction tournamentToResponse,
             TournamentsToResponseFunction tournamentsToResponse,
             RequestToTournamentFunction requestToTournament,
-            RequestToTournamentPatchFunction requestToTournamentPatch
-    ){
+            RequestToTournamentPatchFunction requestToTournamentPatch,
+            TournamentEventRestRepository restRepository){
         this.service=service;
         this.tournamentsToResponse=tournamentsToResponse;
         this.tournamentToResponse=tournamentToResponse;
         this.requestToTournament=requestToTournament;
         this.requestToTournamentPatch = requestToTournamentPatch;
+        this.restRepository = restRepository;
     }
 
     @Override
@@ -64,11 +67,13 @@ public class TournamentDefaultController implements TournamentController {
         else throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 
         service.create(requestToTournamentPatch.apply(id, request));
+        restRepository.update(id, request);
     }
 
     @Override
     public void putTournament(UUID id, PutTournamentRequest request) {
         service.create(requestToTournament.apply(id, request));
+        restRepository.create(id, request);
     }
 
     @Override
