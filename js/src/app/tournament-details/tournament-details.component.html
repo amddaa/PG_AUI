@@ -6,8 +6,8 @@
 <ul>
   <li *ngFor="let participant of participantsList.participants; let i = index" (click)="detailsParticipant(participant.id)">
     <span>{{ participant.surname }}</span>
-    <button (click)="deleteParticipant(participant.id, i)">Delete</button>
-    <button (click)="editParticipant(participant.id)">Edit</button>
+    <button (click)="deleteParticipant(participant.id, i); $event.stopPropagation()">Delete</button>
+    <button (click)="editParticipant(participant.id); $event.stopPropagation()">Edit</button>
   </li>
 </ul>
 
