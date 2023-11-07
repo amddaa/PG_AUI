@@ -9,41 +9,33 @@ import { v4 as uuidv4 } from 'uuid';
   providedIn: 'root'
 })
 export class TournamentsService {
-  private getTournamentsURL = "http://localhost:8083/api/tournaments";
-  private getTournamentByIDURL = "http://localhost:8083/api/tournaments";
-  private deleteTournamentURL = "http://localhost:8083/api/tournaments";
-  private createTournamentURL =  "http://localhost:8083/api/tournaments";
-  private updateTournamentURL = "http://localhost:8083/api/tournaments";
+
   constructor(private http: HttpClient) { }
 
   getTournaments(): Observable<any> {
-    return this.http.get(this.getTournamentsURL);
+    return this.http.get('/api/tournaments');
   }
 
   getTournamentByID(tournamentID: any): Observable<any> {
-    const url = `${this.getTournamentByIDURL}/${tournamentID}`;
-    return this.http.get(url);
+    return this.http.get('/api/tournaments/' + tournamentID);
   }
 
   deleteTournament(tournamentID: string): Observable<any> {
-    const url = `${this.deleteTournamentURL}/${tournamentID}`;
-    return this.http.delete(url);
+    return this.http.delete('/api/tournaments/' + tournamentID);
   }
 
   createTournament(createdName: string, createdRequiredRank: number): Observable<any>
   {
-    const url = `${this.createTournamentURL}/${uuidv4()}`;
     const requestData = {
       name: createdName,
       requiredRank: createdRequiredRank
     };
 
-    return this.http.put(url, requestData, { headers: { 'Content-Type': 'application/json' } });
+    return this.http.put('/api/tournaments/' + uuidv4(), requestData, { headers: { 'Content-Type': 'application/json' } });
   }
 
   updateTournament(tournamentData: any, tournamentID: any)
   {
-    const url = `${this.updateTournamentURL}/${tournamentID}`;
-    return this.http.patch(url, tournamentData,{ headers: { 'Content-Type': 'application/json' } })
+    return this.http.patch('/api/tournaments/' + tournamentID, tournamentData,{ headers: { 'Content-Type': 'application/json' } })
   }
 }
