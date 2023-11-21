@@ -1,6 +1,6 @@
 FROM nginx:1.23.3
 
-LABEL org.opencontainers.image.title="angular"
+LABEL org.opencontainers.image.title="lab-angular"
 LABEL org.opencontainers.image.authors="Adam Ślusarek"
 LABEL org.opencontainers.image.source=""
 LABEL org.opencontainers.image.url=""
