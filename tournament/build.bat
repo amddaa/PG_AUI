@@ -6,7 +6,7 @@ REM org.opencontainers.image.version label in Dockerfile.
 
 set "JAVA_HOME=C:\Program Files\Java\jdk-20" 
 
-call mvn clean verify
+call mvn clean verify -U
 
 REM Pobierz wartości z Dockerfile
 for /f "tokens=2 delims==" %%a in ('findstr /i "org.opencontainers.image.title" Dockerfile') do set title=%%a

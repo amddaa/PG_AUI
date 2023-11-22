@@ -4,12 +4,43 @@ services:
   lab-participant:
     image: lab-participant:1.0.0-snapshot
     restart: always
+    environment:
+      SPRING_DATASOURCE_URL: "jdbc:postgresql://lab-participant-db:5432/lab_participant_db"
+      SPRING_DATASOURCE_DRIVERCLASSNAME: "org.postgresql.Driver"
+      SPRING_DATASOURCE_USERNAME: "lab_participant_user"
+      SPRING_DATASOURCE_PASSWORD: "lab_participant_password"
+      SPRING_JPA_DATABASE_PLATFORM: "org.hibernate.dialect.PostgreSQLDialect"
 
+  lab-participant-db:
+    image: postgres:16.1
+    restart: always
+    environment:
+      POSTGRES_DB: "lab_participant_db"
+      POSTGRES_USER: "lab_participant_user"
+      POSTGRES_PASSWORD: "lab_participant_password"
+    volumes:
+      - lab-participant-db-data:/var/lib/postgresql/data
+  
   lab-tournament:
     image: lab-tournament:1.0.0-snapshot
     restart: always
     environment:
       LAB_PARTICIPANT_URL: "http://lab-participant:8080"
+      SPRING_DATASOURCE_URL: "jdbc:postgresql://lab-tournament-db:5432/lab_tournament_db"
+      SPRING_DATASOURCE_DRIVERCLASSNAME: "org.postgresql.Driver"
+      SPRING_DATASOURCE_USERNAME: "lab_tournament_user"
+      SPRING_DATASOURCE_PASSWORD: "lab_tournament_password"
+      SPRING_JPA_DATABASE_PLATFORM: "org.hibernate.dialect.PostgreSQLDialect"
+      
+  lab-tournament-db:
+    image: postgres:16.1
+    restart: always
+    environment:
+      POSTGRES_DB: "lab_tournament_db"
+      POSTGRES_USER: "lab_tournament_user"
+      POSTGRES_PASSWORD: "lab_tournament_password"
+    volumes:
+      - lab-tournament-db-data:/var/lib/postgresql/data    
 
   lab-gateway:
     image: lab-gateway:1.0.0-snapshot
@@ -26,3 +57,7 @@ services:
       API_URL: http://lab-gateway:8080/api
     ports:
       - "8086:80"
+      
+volumes:
+    lab-participant-db-data:
+    lab-tournament-db-data:
