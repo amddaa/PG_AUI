@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  lab-participant:
+    image: lab-participant:1.0.0-snapshot
+    restart: always
+
+  lab-tournament:
+    image: lab-tournament:1.0.0-snapshot
+    restart: always
+    environment:
+      LAB_PARTICIPANT_URL: "http://lab-participant:8080"
+
+  lab-gateway:
+    image: lab-gateway:1.0.0-snapshot
+    restart: always
+    environment:
+      LAB_PARTICIPANT_URL: "http://lab-participant:8080"
+      LAB_TOURNAMENT_URL: "http://lab-tournament:8080"
+      LAB_GATEWAY_HOST: "lab-gateway:8080"
+
+  lab-angular:
+    image: lab-angular:1.0.0-snapshot
+    restart: always
+    environment:
+      API_URL: http://lab-gateway:8080/api
+    ports:
+      - "8086:80"
