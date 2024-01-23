@@ -1,0 +1,24 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="1" author="amddaa">
+
+        <createTable tableName="participants">
+            <column name="id" type="UUID">
+                <constraints primaryKey="true" primaryKeyName="participants__PK"/>
+            </column>
+            <column name="surname" type="VARCHAR(1024)"/>
+            <column name="rank" type="INTEGER"/>
+            <column name="tournament" type="UUID">
+                <constraints foreignKeyName="participants__tournaments__FK"
+                             referencedTableName="tournaments"
+                             referencedColumnNames="id"
+                             nullable="false"/>
+            </column>
+        </createTable>
+
+    </changeSet>
+
+</databaseChangeLog>
