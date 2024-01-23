@@ -1,6 +1,7 @@
 package pg.tournament.event.repository.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
 import pg.tournament.dto.PatchTournamentRequest;
@@ -12,16 +13,26 @@ import java.util.UUID;
 @Repository
 public class TournamentEventRestRepository implements TournamentEventRepository {
     private final RestTemplate restTemplate;
+    private final DiscoveryClient discoveryClient;
 
     @Autowired
-    public TournamentEventRestRepository(RestTemplate template)
+    public TournamentEventRestRepository(RestTemplate template, DiscoveryClient discoveryClient)
     {
         this.restTemplate = template;
+        this.discoveryClient = discoveryClient;
     }
 
     @Override
     public void delete(UUID id) {
-        restTemplate.delete("/api/tournaments/{id}", id);
+        //restTemplate.delete("/api/tournaments/{id}", id);
+        String uri = discoveryClient.getInstances("lab-participant").stream()
+                .findFirst()
+                .orElseThrow()
+                .getUri()
+                .toString();
+
+        restTemplate.delete(uri + "/api/tournaments/{id}", id);
+
     }
 
     @Override
