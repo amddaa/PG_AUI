@@ -2,7 +2,7 @@ version: '3'
 
 services:
   lab-eureka:
-    image: lab-eureka:1.0.0-SNAPSHOT
+    image: lab-eureka:1.0.0-snapshot
     restart: always
     ports:
       - "8090:8080"
@@ -11,7 +11,7 @@ services:
     image: lab-participant:1.0.0-snapshot
     restart: always
     environment:
-      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: "http://simple-rpg-eureka:8080/eureka"
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: "http://lab-eureka:8080/eureka"
       EUREKA_INSTANCE_INSTANCE_ID: "1"
       SPRING_DATASOURCE_URL: "jdbc:postgresql://lab-participant-db:5432/lab_participant_db"
       SPRING_DATASOURCE_DRIVERCLASSNAME: "org.postgresql.Driver"
@@ -23,7 +23,7 @@ services:
     image: lab-participant:1.0.0-snapshot
     restart: always
     environment:
-      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: "http://simple-rpg-eureka:8080/eureka"
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: "http://lab-eureka:8080/eureka"
       EUREKA_INSTANCE_INSTANCE_ID: "2"
       SPRING_DATASOURCE_URL: "jdbc:postgresql://lab-participant-db:5432/lab_participant_db"
       SPRING_DATASOURCE_DRIVERCLASSNAME: "org.postgresql.Driver"
@@ -45,6 +45,7 @@ services:
     image: lab-tournament:1.0.0-snapshot
     restart: always
     environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: "http://lab-eureka:8080/eureka"
       SPRING_DATASOURCE_URL: "jdbc:postgresql://lab-tournament-db:5432/lab_tournament_db"
       SPRING_DATASOURCE_DRIVERCLASSNAME: "org.postgresql.Driver"
       SPRING_DATASOURCE_USERNAME: "lab_tournament_user"
@@ -65,7 +66,7 @@ services:
     image: lab-gateway:1.0.0-snapshot
     restart: always
     environment:
-      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: "http://simple-rpg-eureka:8080/eureka"
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: "http://lab-eureka:8080/eureka"
       LAB_GATEWAY_HOST: "lab-gateway:8080"
 
   lab-angular:

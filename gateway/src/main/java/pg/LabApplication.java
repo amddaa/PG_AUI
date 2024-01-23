@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.cloud.gateway.route.RouteLocator;
@@ -45,7 +46,7 @@ public class LabApplication {
 								"/api/tournaments/{uuid}",
 								"/api/tournaments"
 						)
-						.uri("ds://lab-tournament")
+						.uri("lb://lab-tournament")
 				)
 				.route("participants", route -> route
 						.host(host)
@@ -56,40 +57,10 @@ public class LabApplication {
 								"/api/tournaments/{uuid}/participants",
 								"/api/tournaments/{uuid}/participants/**"
 						)
-						.uri("ds://lab-participant")
+						.uri("lb://lab-participant")
 				)
 				.build();
 	}
-
-	@Bean
-	public GlobalFilter discoveryFilter(DiscoveryClient discoveryClient) {
-		return new GlobalFilter() {
-			@Override
-			@SneakyThrows
-			public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-				URI uri = exchange.getAttribute(ServerWebExchangeUtils.GATEWAY_REQUEST_URL_ATTR);
-				if (uri != null && "ds".equals(uri.getScheme())) {
-					System.out.println(uri.getHost());
-					ServiceInstance instance = discoveryClient.getInstances(uri.getHost()).stream()
-							.findFirst()
-							.orElseThrow();
-					System.out.println(instance.getHost());
-					URI newUri = new URI(
-							instance.getScheme(),   // Updated scheme
-							uri.getUserInfo(),      // Keep the original user info
-							instance.getHost(),     // Updated host
-							instance.getPort(),     // Updated port
-							uri.getPath(),          // Keep the original path
-							uri.getQuery(),         // Keep the original query
-							uri.getFragment()       // Keep the original fragment
-					);
-					exchange.getAttributes().put(ServerWebExchangeUtils.GATEWAY_REQUEST_URL_ATTR, newUri);
-				}
-				return chain.filter(exchange);
-			}
-		};
-	}
-
 
 	@Bean
 	public CorsWebFilter corsWebFilter() {
