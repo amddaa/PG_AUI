@@ -19,3 +19,7 @@ cd ..
 cd .\js\
 call .\build.bat
 cd ..
+
+cd .\eureka\
+call .\build.bat
+cd ..
