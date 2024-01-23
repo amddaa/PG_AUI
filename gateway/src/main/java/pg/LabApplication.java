@@ -1,19 +1,31 @@
 package pg;
 
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
+import org.springframework.cloud.gateway.filter.GatewayFilterChain;
+import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
+import org.springframework.cloud.gateway.support.ServerWebExchangeUtils;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.reactive.CorsWebFilter;
 import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
+import org.springframework.web.server.ServerWebExchange;
+import reactor.core.publisher.Mono;
 
+import java.net.URI;
 import java.util.Collections;
 import java.util.Arrays;
 
 @SpringBootApplication
+@EnableDiscoveryClient
 public class LabApplication {
 
 	public static void main(String[] args) {
@@ -23,8 +35,6 @@ public class LabApplication {
 	@Bean
 	public RouteLocator routeLocator(
 			RouteLocatorBuilder builder,
-			@Value("${lab.participant.url}") String participantUrl,
-			@Value("${lab.tournament.url}") String tournamentUrl,
 			@Value("${lab.gateway.host}") String host
 	){
 		return builder
@@ -36,7 +46,7 @@ public class LabApplication {
 								"/api/tournaments/{uuid}",
 								"/api/tournaments"
 						)
-						.uri(tournamentUrl)
+						.uri("lb://lab-tournament")
 				)
 				.route("participants", route -> route
 						.host(host)
@@ -47,7 +57,7 @@ public class LabApplication {
 								"/api/tournaments/{uuid}/participants",
 								"/api/tournaments/{uuid}/participants/**"
 						)
-						.uri(participantUrl)
+						.uri("lb://lab-participant")
 				)
 				.build();
 	}

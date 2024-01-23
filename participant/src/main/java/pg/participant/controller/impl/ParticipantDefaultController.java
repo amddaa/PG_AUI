@@ -1,5 +1,6 @@
 package pg.participant.controller.impl;
 
+import lombok.extern.java.Log;
 import pg.participant.controller.api.ParticipantController;
 import pg.participant.dto.GetParticipantResponse;
 import pg.participant.dto.GetParticipantsResponse;
@@ -20,8 +21,10 @@ import pg.tournament.service.api.TournamentService;
 
 import java.util.Optional;
 import java.util.UUID;
+import java.util.logging.Level;
 
 @RestController
+@Log
 public class ParticipantDefaultController implements ParticipantController {
     private final ParticipantService participantService;
     private final TournamentService tournamentService;
@@ -49,11 +52,13 @@ public class ParticipantDefaultController implements ParticipantController {
 
     @Override
     public GetParticipantsResponse getParticipants() {
+        log.log(Level.INFO, "getParticipants");
         return participantsToResponse.apply(participantService.findAll());
     }
 
     @Override
     public GetParticipantResponse getParticipant(UUID id) {
+		log.log(Level.INFO, "getParticipant");
         return participantService.find(id)
                 .map(participantToResponse)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
@@ -61,6 +66,7 @@ public class ParticipantDefaultController implements ParticipantController {
 
     @Override
     public GetParticipantsResponse getTournamentParticipants(UUID tournamentId) {
+		log.log(Level.INFO, "getTournamentParticipants");
         return participantService.findAllByTournament(tournamentId)
                 .map(participantsToResponse)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
