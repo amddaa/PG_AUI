@@ -3,8 +3,9 @@ Tournaments and particpants web app -  N:1 relationship.
 - Spring Boot (Java) - backend
 - Angular - frontend
 - Docker, docker compose - images, containerization
-##Run:
-1. Build images with: build.bat (Windows)
+- Eureka, discovery service
+## Run:
+1. Build images with: build.bat (Windows, path to java inside)
 2. Build and run container: docker compose up -d
 3. http://localhost:8086/
 ![image](https://github.com/amddaa/PG_AUI/assets/67384782/c83cfa0e-b601-4eab-8b7d-634ff3336ade)
