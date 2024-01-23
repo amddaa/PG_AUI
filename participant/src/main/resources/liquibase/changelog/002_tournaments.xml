@@ -6,9 +6,11 @@
     <changeSet id="2" author="amddaa">
 
         <createTable tableName="tournaments">
-            <column name="id" type="UUID">
-                <constraints primaryKey="true" primaryKeyName="tournaments__PK"/>
+            <column name="id" type="uuid">
+                <constraints primaryKey="true"/>
             </column>
+            <column name="name" type="varchar(255)"/>
+            <column name="required_rank" type="integer"/>
         </createTable>
     </changeSet>
 
