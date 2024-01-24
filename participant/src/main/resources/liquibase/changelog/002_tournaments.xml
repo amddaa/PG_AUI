@@ -10,7 +10,7 @@
                 <constraints primaryKey="true"/>
             </column>
             <column name="name" type="varchar(255)"/>
-            <column name="required_rank" type="integer"/>
+            <column name="required_rank" type="int"/>
         </createTable>
     </changeSet>
 
