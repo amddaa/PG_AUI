@@ -23,3 +23,7 @@ cd ..
 cd .\eureka\
 call .\build.bat
 cd ..
+
+cd .\config\
+call .\build.bat
+cd ..

@@ -1,6 +1,14 @@
 version: '3'
 
 services:
+  lab-config:
+    image: lab-config:1.0.0-snapshot
+    restart: always
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: "http://lab-eureka:8080/eureka"
+    volumes:
+      - "./configuration:/var/lab-config/configuration"
+
   lab-eureka:
     image: lab-eureka:1.0.0-snapshot
     restart: always
@@ -11,25 +19,15 @@ services:
     image: lab-participant:1.0.0-snapshot
     restart: always
     environment:
-      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: "http://lab-eureka:8080/eureka"
+      SPRING_CONFIG_IMPORT: "configserver:http://lab-config:8080"
       EUREKA_INSTANCE_INSTANCE_ID: "1"
-      SPRING_DATASOURCE_URL: "jdbc:postgresql://lab-participant-db:5432/lab_participant_db"
-      SPRING_DATASOURCE_DRIVERCLASSNAME: "org.postgresql.Driver"
-      SPRING_DATASOURCE_USERNAME: "lab_participant_user"
-      SPRING_DATASOURCE_PASSWORD: "lab_participant_password"
-      SPRING_JPA_DATABASE_PLATFORM: "org.hibernate.dialect.PostgreSQLDialect"
       
   lab-participant-2:
     image: lab-participant:1.0.0-snapshot
     restart: always
     environment:
-      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: "http://lab-eureka:8080/eureka"
+      SPRING_CONFIG_IMPORT: "configserver:http://lab-config:8080"
       EUREKA_INSTANCE_INSTANCE_ID: "2"
-      SPRING_DATASOURCE_URL: "jdbc:postgresql://lab-participant-db:5432/lab_participant_db"
-      SPRING_DATASOURCE_DRIVERCLASSNAME: "org.postgresql.Driver"
-      SPRING_DATASOURCE_USERNAME: "lab_participant_user"
-      SPRING_DATASOURCE_PASSWORD: "lab_participant_password"
-      SPRING_JPA_DATABASE_PLATFORM: "org.hibernate.dialect.PostgreSQLDialect"
 
   lab-participant-db:
     image: postgres:16.1
@@ -45,12 +43,7 @@ services:
     image: lab-tournament:1.0.0-snapshot
     restart: always
     environment:
-      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: "http://lab-eureka:8080/eureka"
-      SPRING_DATASOURCE_URL: "jdbc:postgresql://lab-tournament-db:5432/lab_tournament_db"
-      SPRING_DATASOURCE_DRIVERCLASSNAME: "org.postgresql.Driver"
-      SPRING_DATASOURCE_USERNAME: "lab_tournament_user"
-      SPRING_DATASOURCE_PASSWORD: "lab_tournament_password"
-      SPRING_JPA_DATABASE_PLATFORM: "org.hibernate.dialect.PostgreSQLDialect"
+      SPRING_CONFIG_IMPORT: "configserver:http://lab-config:8080"
       
   lab-tournament-db:
     image: postgres:16.1
@@ -66,7 +59,7 @@ services:
     image: lab-gateway:1.0.0-snapshot
     restart: always
     environment:
-      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: "http://lab-eureka:8080/eureka"
+      SPRING_CONFIG_IMPORT: "configserver:http://lab-config:8080"
       LAB_GATEWAY_HOST: "lab-gateway:8080"
 
   lab-angular:

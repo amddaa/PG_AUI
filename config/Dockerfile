@@ -1,6 +1,6 @@
 FROM eclipse-temurin:17.0.6_10-jre
 
-LABEL org.opencontainers.image.title="lab-tournament"
+LABEL org.opencontainers.image.title="lab-config"
 LABEL org.opencontainers.image.authors="Adam Ślusarek"
 LABEL org.opencontainers.image.source=""
 LABEL org.opencontainers.image.url=""
@@ -16,12 +16,17 @@ ENV VERSION="1.0.0-snapshot"
 
 ENV SERVER_PORT=8080
 
+ENV EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://localhost:8085/eureka
 ENV EUREKA_INSTANCE_INSTANCE_ID=1
 
-ENV SPRING_CONFIG_IMPORT=optional:configserver:http://localhost:8086
+ENV SPRING_PROFILES_ACTIVE=native
+
+ENV SPRING_CLOUD_CONFIG_SERVER_NATIVE_SEARCH_LOCATIONS=file:/var/lab-config/configuration
+
+VOLUME /var/lab-config/configuration
 
 EXPOSE 8080
 
-COPY target/lab-tournament-${VERSION}.jar /opt/lab-tournament/lab-tournament.jar
+COPY target/lab-config-${VERSION}.jar /opt/lab-config/lab-config.jar
 
-CMD ["java", "-jar", "/opt/lab-tournament/lab-tournament.jar"]
+CMD ["java", "-jar", "/opt/lab-config/lab-config.jar"]
